@@ -5,6 +5,11 @@ const fileModel = require('../models/files.models')
 const authMiddleware = require('../middlewares/auth')
 const firebase = require('../config/firebase.config')
 
+
+router.get('/', (req, res) => {
+    res.redirect('/home');
+});
+
 router.get('/home',authMiddleware, async (req, res) => {
     const userFiles = await fileModel.find({user:req.user.userId})
     console.log(userFiles)
